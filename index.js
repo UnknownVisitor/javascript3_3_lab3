@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 async function proxyFetch(apiUrl, res) {
   try {
     const response = await fetch(apiUrl);
-    
+
     if (!response.ok) {
       const errorText = await response.text();
       return res.status(response.status).json({ 
@@ -39,12 +39,25 @@ async function proxyFetch(apiUrl, res) {
   }
 }
 
-// === TRASA GIPHY (TYLKO Com3_3.1) ===
+// === TRASY GIPHY ===
 
-// Com3_3.1: Random GIF
+// Random GIF
 app.get("/random", (req, res) => {
     const url = `${GIPHY_API_BASE}/random?api_key=${GIPHY_API_KEY}&rating=g`;
     proxyFetch(url, res); 
+});
+
+// Search GIF
+app.get("/search", (req, res) => {
+    const { q, limit, offset } = req.query;
+
+    if (!q) {
+
+        return res.status(400).json({ error: "Wymagany parametr 'q' (fraza wyszukiwania)." });
+    }
+
+    const url = `${GIPHY_API_BASE}/search?api_key=${GIPHY_API_KEY}&q=${q}&limit=${limit || 5}&offset=${offset || 0}&rating=g`;
+    proxyFetch(url, res);
 });
 
 

@@ -9,12 +9,30 @@
 <body>
     <h1>GIPHY Public API</h1>
     
-    <div class="controls">
+    <div class="controls giphy-controls">
         <h2>1. Losowy GIF</h2>
         <button id="fetch-random-gif">Pobierz Losowy GIF</button>
         <div id="random-gif-area" class="gif-display-area"></div>
     </div>
     
+    <div class="controls giphy-controls" style="margin-top: 25px;">
+        <h2>2. Wyszukiwanie GIF</h2>
+        <div class="search-controls">
+            <label for="search-query">Fraza:</label>
+            <input type="text" id="search-query" value="cats" placeholder="Wpisz frazę" style="flex-grow: 1;">
+            
+            <button id="search-gif-button">Szukaj</button>
+        </div>
+        
+        <div id="search-results-area" class="gif-grid"></div>
+
+        <div class="pagination-controls" style="display: none;">
+            <button id="prev-page" disabled>Poprzednia</button>
+            <span id="page-info">Strona 1</span>
+            <button id="next-page" disabled>Następna</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
