@@ -15,21 +15,27 @@
         <div id="random-gif-area" class="gif-display-area"></div>
     </div>
     
-    <div class="controls giphy-controls" style="margin-top: 25px;">
+    <div class="controls giphy-controls">
         <h2>2. Wyszukiwanie GIF</h2>
         <div class="search-controls">
             <label for="search-query">Fraza:</label>
-            <input type="text" id="search-query" value="cats" placeholder="Wpisz frazę" style="flex-grow: 1;">
+            <input type="text" id="search-query" value="cats" placeholder="Wpisz frazę (np. coding)">
+            
+            <label for="limit">Limit:</label>
+            <input type="number" id="limit" value="5" min="1" max="50">
             
             <button id="search-gif-button">Szukaj</button>
         </div>
         
-        <div id="search-results-area" class="gif-grid"></div>
+        <div id="search-results-area">
+            <p id="search-status-text">Wpisz frazę i kliknij Szukaj, aby rozpocząć.</p>
+            <div id="gif-grid-container" class="gif-grid"></div>
+        </div>
 
-        <div class="pagination-controls" style="display: none;">
-            <button id="prev-page" disabled>Poprzednia</button>
-            <span id="page-info">Strona 1</span>
-            <button id="next-page" disabled>Następna</button>
+        <div class="pagination-controls">
+            <button id="prev-page" disabled>&#9664; Poprzednia</button>
+            <span id="page-info">Strona 0</span>
+            <button id="next-page" disabled>Następna &#9658;</button>
         </div>
     </div>
 
